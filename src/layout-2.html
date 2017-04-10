@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>不使用css3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #ccc;
+            text-align: center;
+        }
+        .long {
+            height: 300px;
+            background: pink;
+        }
+        
+        .new-layout {
+            /*background: #000;
+            padding: 50px;*/
+        }
+        .left {
+            font-size: 30px;
+            color: #fff;
+            background: #e43;
+            position: absolute;
+            left: 50px;
+            width: 300px;
+            height: 1500px;
+        }
+        .right {
+            background: #699f00;
+            margin-left: 300px;
+            height: 1500px;
+        }
+    </style>
+</head> 
+<body>
+    <div class="long"></div>
+    <div class="new-layout">
+        <div class="left" id="sticky1">
+            左边吸顶
+        </div>
+        <div class="right"></div>
+    </div>
+    <script src="./index.js"></script>
+    <script>
+        var sticky1 = new Sticky({
+            el: 'sticky1',
+            css3: false
+        });
+    </script>
+</body>
+</html>

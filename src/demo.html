@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Sticky测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 2000px;
+            background: #ccc;
+            text-align: center;
+        }
+        .body1 {
+            height: 300px;
+            background: #000;
+        }
+        .sticky {
+            height: 80px;
+            width: 100%;
+            background-color: #e43;
+            font-size: 20px;
+            color: #fff; 
+            line-height: 80px;
+        }
+        .body2 {
+            height: 300px;
+            background: pink;
+        }
+        #sticky2 {
+            /*background: #ccc;*/
+        }
+    </style>
+</head> 
+<body>
+    <div class="body1">
+        <button id="destroy1">销毁</button>
+    </div>
+    <div class="sticky" id="sticky1">sticky1</div>
+    <div class="body2"></div>
+    <div class="body1">
+        <button id="destroy2">销毁</button>
+    </div>
+    <div class="sticky" id="sticky2">sticky2</div>
+    <div class="body2"></div>
+    <script src="../dist/dist.min.js"></script>
+
+    <script>
+        var sticky1 = new Sticky({
+            el: 'sticky1'
+        });
+        document.getElementById('destroy1').onclick = function () {
+            sticky1.destory();
+        };
+        var sticky2 = new Sticky({
+            el: 'sticky2'
+        });
+        document.getElementById('destroy2').onclick = function () {
+            sticky2.destory();
+        };
+    </script>
+</body>
+</html>
