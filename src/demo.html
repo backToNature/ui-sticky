@@ -30,16 +30,17 @@
             height: 300px;
             background: pink;
         }
-        #sticky2 {
-            /*background: #ccc;*/
+        .description {
+            color: #fff;
         }
     </style>
 </head> 
 <body>
     <div class="body1">
         <button id="destroy1">销毁</button>
+        <h1 class="description">下面的sticky到达页面顶部后会吸住</h1>
     </div>
-    <div class="sticky" id="sticky1">sticky1</div>
+    <div class="sticky" id="sticky1">到达页面顶部后会吸住</div>
     <div class="body2"></div>
     <div class="body1">
         <button id="destroy2">销毁</button>
@@ -47,10 +48,10 @@
     <div class="sticky" id="sticky2">sticky2</div>
     <div class="body2"></div>
     <script src="../dist/dist.min.js"></script>
-
     <script>
         var sticky1 = new Sticky({
-            el: 'sticky1'
+            el: 'sticky1',
+            css3: false
         });
         document.getElementById('destroy1').onclick = function () {
             sticky1.destory();

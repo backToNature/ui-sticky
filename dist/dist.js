@@ -76,7 +76,7 @@
     var addPlaceholder = function (dom, id) {
         // 需要添加占位符的情况只有当元素为普通文档流
         var currentPosition = dom.style.position;
-        if (currentPosition !== '' || currentPosition !== 'static' || currentPosition !== 'relative') {
+        if (currentPosition !== '' && currentPosition !== 'static' && currentPosition !== 'relative') {
             return;
         }
         if (doc.getElementById('sticky-place' + id)) {
