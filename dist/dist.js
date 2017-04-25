@@ -62,7 +62,7 @@
     var setFixed = function (dom, direction, offset) {
         var style = dom.style;
         style.position = 'fixed';
-        style[direction] = offset;
+        style[direction] = offset + 'px';
     };
 
     var returnOrigin = function (dom, originStyle) {
@@ -108,6 +108,7 @@
         _this._dom = doc.getElementById(_this.el);
         option.css3 === false ? _this.css3 = false : _this.css3 = true;
         _this.offsetTop = _this._dom.offsetTop;
+        _this.container = option.container ? doc.getElementById(option.container) : win;
         _this._isSupport = util.isSupportSticky();
         _this._originStyle = {
             position: _this._dom.style.position,
@@ -124,17 +125,27 @@
         }
 
         var fnScroll = function (e) {
-            if (util.scrollTop() >= _this.offsetTop) {
-                addPlaceholder(_this._dom, _this.sticky_id);
-                setFixed(_this._dom, _this.type, _this.offset);
+            if (_this.container === win) {
+                if (util.scrollTop() >= _this.offsetTop) {
+                    addPlaceholder(_this._dom, _this.sticky_id);
+                    setFixed(_this._dom, _this.type, _this.offset);
+                } else {
+                    returnOrigin(_this._dom, _this._originStyle);
+                    removePlaceholder(_this.sticky_id);
+                }
             } else {
-                returnOrigin(_this._dom, _this._originStyle);
-                removePlaceholder(_this.sticky_id);
+                if (_this.container.scrollTop + _this.container.offsetTop >= _this.offsetTop) {
+                    addPlaceholder(_this._dom, _this.sticky_id);
+                    setFixed(_this._dom, _this.type, _this.offset + _this.container.offsetTop);
+                } else {
+                    returnOrigin(_this._dom, _this._originStyle);
+                    removePlaceholder(_this.sticky_id);
+                }
             }
         };
 
         _this._fnScroll = fnScroll;
-        util.addEvent(win, 'scroll', fnScroll, false);
+        util.addEvent(_this.container, 'scroll', fnScroll, false);
     };
 
     Sticky.prototype.destory = function () {
