@@ -79,6 +79,22 @@ npm安装
 		el: 'sticky',
 		css3: false // 定义吸顶吸底方法不使用css3属性
 	});
+
+### container
+
+如果需要固定的元素在局部滚动容器里，需要指定滚动容器
+
+**Default:** container: window
+
+**Example:**
+
+	<div id="sticky"></div>
+	new Sticky({
+		el: 'sticky',
+		container: 'sticky-wrapper'
+	});
+
+**注意：**局部固定方法只能使用非css3方式
 	
 ## methods
 
