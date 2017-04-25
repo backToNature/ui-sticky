@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Sticky测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 2000px;
+            background: #ccc;
+            text-align: center;
+        }
+        html,body {
+            overflow: hidden;
+        }
+        .body1 {
+            height: 300px;
+            background: #000;
+        }
+        .sticky {
+            height: 80px;
+            width: 100%;
+            background-color: #e43;
+            font-size: 20px;
+            color: #fff; 
+            line-height: 80px;
+        }
+        .body2 {
+            height: 300px;
+            background: pink;
+        }
+        .description {
+            color: #fff;
+        }
+        .scroll {
+            width: 100%;
+            height: 900px;
+            overflow-y: scroll;
+        }
+        .long-div {
+            height: 1500px;
+            width: 100%;
+            background: #fff;
+        }
+        .sticky-scroll {
+            background: green;
+            width: 100%;
+            height: 100px;
+        }
+
+    </style>
+</head> 
+<body>
+    <div class="sticky-scroll" style="background: #000;"></div>
+    <div class="scroll" id="scroll">
+        <div class="long-div" style="height: 500px;"></div>
+        <div class="sticky-scroll" id="scroll-sticky"></div>
+        <div class="long-div"></div>
+    </div>
+    <div class="body1">
+        <button id="destroy1">销毁</button>
+        <h1 class="description">下面的sticky到达页面顶部后会吸住</h1>
+    </div>
+    <div class="sticky" id="sticky1">到达页面顶部后会吸住</div>
+    <div class="body2"></div>
+    <div class="body1">
+        <button id="destroy2">销毁</button>
+    </div>
+    <div class="sticky" id="sticky2">sticky2</div>
+    <div class="body2"></div>
+    <!-- <script src="../dist/dist.min.js"></script> -->
+    <script src="./index.js"></script>
+    <script>
+        // var sticky1 = new Sticky({
+        //     el: 'sticky1',
+        //     css3: false
+        // });
+        // document.getElementById('destroy1').onclick = function () {
+        //     sticky1.destory();
+        // };
+        // var sticky2 = new Sticky({
+        //     el: 'sticky2'
+        // });
+        // document.getElementById('destroy2').onclick = function () {
+        //     sticky2.destory();
+        // };
+
+        var sticky1 = new Sticky({
+            el: 'scroll-sticky',
+            css3: false,
+            container: 'scroll',
+        });
+
+        var $wrapper = document.querySelector('#scroll');
+        var $sticky = document.querySelector('#scroll-sticky');
+
+        // $wrapper.addEventListener('scroll', function (e) {
+        //     // console.log(e);
+        // }, false);
+
+        // document.getElementById('destroy1').onclick = function () {
+        //     sticky1.destory();
+        // };
+    </script>
+</body>
+</html>
